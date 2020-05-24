@@ -1,0 +1,90 @@
+
+{% extends "project/base.html" %}
+
+{%block title%}
+Tasks
+{%endblock%}
+
+
+
+{% block header%}
+
+{%load static%}
+<link rel="stylesheet" href="{% static "css/task.css" %}">
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+{%endblock%}
+
+{%block content%}
+<div id="aspect-content">
+  <!--task 1 start-->
+  {%for item in tasks%}
+<div class="aspect-tab ">
+  <!--Change the item-(number) for each iteration-->
+<input id="item-{{item.id}}" type="checkbox" class="aspect-input" name="aspect">
+<label for="item-{{item.id}}" class="aspect-label"></label>
+<div class="aspect-content">
+<div class="aspect-info">
+<div class="chart-pie positive over50">
+<span class="chart-pie-count">{{loop.index}}</span>
+<div>
+<div class="first-fill"></div>
+<div class="second-fill" style="transform: rotate(360deg)"></div>
+</div>
+</div>
+<span class="aspect-name" style="font-size: large;">{{item.name}}</span>
+</div>
+<div class="aspect-stat">
+<div class="all-opinions">
+<span class="all-opinions-count">{{item.category.name}}</span>
+</div>
+<div>
+
+<button class="positive-count"><a href="./add/{{item.id}}">Add to Agenda</a></button>
+</div>
+</div>
+</div>
+<div class="aspect-tab-content">
+<div class="sentiment-wrapper">
+<div>
+<div>
+  <!--Image Here-->
+  <img style="border-radius: 10px;max-width: 100%;" src="{{item.icon.url}}" width="250px" height="250px">
+<div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div class="neutral-count opinion-header">
+<span style="font-size: 2em;">Description</span>
+</div>
+<div>
+<span style="font-size: large;line-height: 50px;"><strong>Start Date:</strong> {{item.startDate}}
+<br><strong>End date:</strong> {{item.endDate}}
+<br><strong>URL:</strong> <a href="{{item.url}}">{{item.url}}</a>
+<br> <a  style="color:green" href="./add/{{item.id}}">Add to agenda</a>
+</span>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div class="negative-count opinion-header">
+<span style="font-size: 2em;">Details</span>
+</div>
+<div>
+<span style="font-size: large;line-height: 30px;">{{item.description}}</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--End-->
+
+{%endfor%}
+
+</div>
+{%endblock %}

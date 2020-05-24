@@ -11,8 +11,10 @@ def function():
 
 urlpatterns = [
     # path('',dashboard, name="dashboard"),
-    path('',listCategories, name="dashboard"),
+    path('',dashboard, name="dashboard"),
+    path('add/<int:id>/',addAgenda, name="dashboard"),
     path('category/',listCategories, name="categories"),
-    path('category/<int:category>/',category, name="tasks"),
+    path('category/<int:category>/',task, name="tasks"),
+    path('category/<int:category>/add/<int:id>/',addAgenda, name="tasks"),
     
 ]
