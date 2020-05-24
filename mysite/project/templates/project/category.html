@@ -1,0 +1,33 @@
+
+{% extends "project/base.html" %}
+
+{%block title%}
+Category
+{%endblock%}
+
+
+
+{% block header%}
+
+{%load static%}
+<link rel="stylesheet" href="{% static "css/category.css" %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+{%endblock%}
+
+{%block content%}
+<main class="page-content">
+    <!--Card starts here-->
+{%for item in cat%}
+<div class="card" style="background-image: url({{item.icon.url}});">
+<div class="content">
+<h2 class="title">{{item.name}}</h2>
+<p class="copy">Check out these skills to improve you daily routine and do something great</p>
+<a href="./{{item.id}}/"><button class="btn">View Trips</button></a>
+</div>
+</div>
+{%endfor%}
+
+<!--card ends here-->
+</main>
+{%endblock %}
